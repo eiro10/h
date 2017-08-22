@@ -318,6 +318,23 @@ paths:
             $ref: '#/definitions/Error'
       security:
         - authClientCredentials: []
+  /groups/{id}/members/me:
+    delete:
+      summary: Leave a group
+      operationId: leaveGroup
+      parameters:
+        - name: id
+          in: path
+          description: ID of the group to leave
+          required: true
+          type: string
+      responses:
+        '204':
+          description: Success
+        '404':
+          description: Group not found
+          schema:
+            $ref: '#/definitions/Error'
 definitions:
   NewAnnotation:
     $ref: './schemas/annotation-schema.json'
